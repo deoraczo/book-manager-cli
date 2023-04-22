@@ -12,10 +12,13 @@ type menuOption int
 const (
 	exit menuOption = iota
 	createBook
+	getBooks
 )
 
 func main() {
 	bookCreator := application.NewBookCreator()
+	bookRetriever := application.NewBookRetriever()
+
 	for {
 		printMenu()
 
@@ -27,6 +30,9 @@ func main() {
 
 			handleCreateBook(bookCreator, bookDto)
 			fmt.Println("Libro creado correctamente.")
+		case getBooks:
+			books, _ := bookRetriever.Execute()
+			fmt.Println(books)
 		case exit:
 			fmt.Println("Adiós!")
 			return
@@ -40,6 +46,7 @@ func main() {
 func printMenu() {
 	fmt.Println("Seleccione una opción:")
 	fmt.Printf("%v: Crear libro\n", createBook)
+	fmt.Printf("%v: Mostrar todo los libros\n", getBooks)
 	fmt.Printf("%v: Salir\n", exit)
 }
 
