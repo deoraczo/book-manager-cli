@@ -39,9 +39,6 @@ func TestBookRetrieverIsImmutable(t *testing.T) {
 	actualBooks[0].Title = updatedTitle
 
 	// Comprobamos que la modificación no afectó al slice original
-	/*if book.Books[0].Title == updatedTitle {
-		t.Errorf("El título del primer libro debió mantenerse como 'El nombre del viento', pero es '%s'", book.Books[0].Title)
-	}*/
 	if book.Books[0].Title != "El nombre del viento" {
 		t.Errorf("Expected 'El nombre del viento' but got '%s'", book.Books[0].Title)
 	}
